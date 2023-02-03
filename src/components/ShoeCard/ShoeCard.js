@@ -36,6 +36,8 @@ const ShoeCard = ({
       <Wrapper>
         <ImageWrapper>
           <Image alt="" src={imageSrc} />
+          {variant === "new-release" && <Flag color={COLORS.secondary}>Just Released!</Flag>}
+          {variant === "on-sale" && <Flag color={COLORS.primary}>Sale</Flag>}
         </ImageWrapper>
         <Spacer size={12} />
         <Row>
@@ -50,6 +52,18 @@ const ShoeCard = ({
     </Link>
   );
 };
+
+const Flag = styled.span`
+  background-color: ${props => props.color};
+  color: ${COLORS.white};
+  position: absolute;
+  top: 12px;
+  right: -4px;
+  padding: 9px;
+  font-size: ${14 / 16}rem;
+  font-weight: 700;
+  border-radius: 2px;
+`;
 
 const Link = styled.a`
   text-decoration: none;
@@ -66,6 +80,7 @@ const ImageWrapper = styled.div`
 
 const Image = styled.img`
   width: 100%;
+  border-radius: 16px 16px 4px 4px;
 `;
 
 const Row = styled.div`
